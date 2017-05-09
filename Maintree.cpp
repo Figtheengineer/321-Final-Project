@@ -4,14 +4,11 @@
 #include "Maintree.h"
 #include <fstream>
 
-Maintree::Maintree()
+Maintree::Maintree() // constructor
 {
 	root = NULL;
 }
 
-ostream &operator << (ostream &ost, struct department) {
-	return ost;
-}
 
 void Maintree::destroy_tree(node *leaf)
 {
@@ -23,7 +20,7 @@ void Maintree::destroy_tree(node *leaf)
 	}
 }
 
-int Maintree::readintree()
+int Maintree::readintree()// bring information into tree
 {
 	ifstream inFile;
 	inFile.open("ServerOutput.txt");
@@ -103,7 +100,7 @@ void Maintree::insert(int key, node *leaf, node *mel) // creates node if one is 
 	}
 }
 
-node *Maintree::search(int key, node *leaf)
+node *Maintree::search(int key, node *leaf) // searches for customers in the tree
 {
 	if (leaf != NULL)
 	{
@@ -130,7 +127,7 @@ void Maintree::rootmaker(int key, node *mel) //Creates a root node if there is n
 	}
 }
 
-node *Maintree::search(int key)
+node *Maintree::search(int key) // part of the search function
 {
 	return search(key, root);
 }
@@ -141,7 +138,7 @@ void Maintree::destroy_tree()
 }
 
 
-void Maintree::export_recursive(node* leaf, ofstream & out)
+void Maintree::export_recursive(node* leaf, ofstream & out) // part of the export function to export the tree to a file with all the customer information
 {
 	if (leaf != NULL)
 	{
@@ -159,7 +156,7 @@ void Maintree::export_recursive(node* leaf, ofstream & out)
 
 
 
-int Maintree::exportTree()
+int Maintree::exportTree() // export function start in order to put the tree into a file
 {
 	ofstream outFile("TreeOutput.txt");
 	if (outFile.is_open() != true)
